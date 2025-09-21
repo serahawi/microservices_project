@@ -4,7 +4,7 @@ import com.demo.loans.dto.LoansDto;
 
 public interface iLoansService {
 
-    void createLoan(LoansDto loansDto);
+    void createLoan(String mobileNumber);
 
     LoansDto fetchLoan(String mobileNumber);
 
