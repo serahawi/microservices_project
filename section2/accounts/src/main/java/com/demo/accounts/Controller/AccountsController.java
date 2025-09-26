@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
         description = "CRUD REST APIs for accounts"
 )
 @RestController
-@RequestMapping("/api/accounts")
+@RequestMapping("/api")
 @AllArgsConstructor
 @Validated
 public class AccountsController {

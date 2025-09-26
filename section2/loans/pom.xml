@@ -11,6 +11,7 @@
 	<groupId>com.demo</groupId>
 	<artifactId>loans</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 	<name>loans</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -93,6 +94,9 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+                    <image>
+                        <name>serahawi/${project.artifactId}:s4</name>
+                    </image>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
