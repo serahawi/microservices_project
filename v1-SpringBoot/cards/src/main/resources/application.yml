@@ -16,3 +16,22 @@ spring:
       hibernate:
         ddl-auto: update
       show-sql: true
+  config:
+    import:
+      - "application_prod.yml"
+      - "application_qa.yml"
+  profiles:
+    active:
+      - "qa"
+
+build:
+  version: "3.0"
+
+cards:
+  message: "Welcome to cards related local APIs "
+  contactDetails:
+    name: "Hashim Hani - Application Support"
+    email: "e.hashimkilani@gmail.com"
+  onCallSupport:
+    - (+20) 1141679790
+    - (555) 523-1345

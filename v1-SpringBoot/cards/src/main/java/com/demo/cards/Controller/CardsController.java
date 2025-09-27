@@ -5,6 +5,7 @@ import com.demo.cards.Service.iCardsService;
 import com.demo.cards.dto.CardsDto;
 import com.demo.cards.dto.ErrorResponseDto;
 import com.demo.cards.dto.ResponseDto;
+import com.demo.cards.dto.cardsContactInfoDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -14,6 +15,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +33,9 @@ import org.springframework.web.bind.annotation.*;
 public class CardsController {
 
     private iCardsService cardsService;
+
+    @Autowired
+    private cardsContactInfoDto cardsContactInfoDto;
 
 
 
@@ -148,6 +153,28 @@ public class CardsController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new ResponseDto(CardsConstants.STATUS_417,CardsConstants.MESSAGE_417_DELETE));
         }
+    }
+
+
+    @Operation(summary = "Get Contact Info", description = "REST API to Get Contact Info")
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "HTTP status OK"
+            ),
+            @ApiResponse(
+                    responseCode = "417",
+                    description = "INTERNAL SERVER ERROR",
+                    content = @Content(
+                            schema = @Schema(implementation = ErrorResponseDto.class)
+                    )
+            )
+    })
+    @GetMapping("/contact-info")
+    public ResponseEntity<cardsContactInfoDto> getContactInfo() {
+        return ResponseEntity
+                .ok()
+                .body(cardsContactInfoDto);
     }
 
 }
