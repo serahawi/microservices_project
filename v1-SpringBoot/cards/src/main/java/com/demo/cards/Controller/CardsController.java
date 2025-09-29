@@ -16,6 +16,8 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,15 +30,23 @@ import org.springframework.web.bind.annotation.*;
         name = "CRUD REST APIs for Cards",
         description = "CRUD REST APIs to CREATE, UPDATE, FETCH AND DELETE card details"
 )
-@AllArgsConstructor
 @Validated
 public class CardsController {
 
-    private iCardsService cardsService;
+    private final iCardsService cardsService;
+
+    public CardsController(iCardsService cardsService) {
+        this.cardsService = cardsService;
+    }
 
     @Autowired
     private cardsContactInfoDto cardsContactInfoDto;
 
+    @Value("${build.version}")
+    private String buildVersion;
+
+    @Autowired
+    private Environment  environment;
 
 
     @Operation(summary = "Create new card for customer", description = "REST API to Create new card for customer")
@@ -175,6 +185,49 @@ public class CardsController {
         return ResponseEntity
                 .ok()
                 .body(cardsContactInfoDto);
+    }
+
+    @Operation(summary = "Get Build Info", description = "REST API to Get Build Info")
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "HTTP status OK"
+            ),
+            @ApiResponse(
+                    responseCode = "417",
+                    description = "INTERNAL SERVER ERROR",
+                    content = @Content(
+                            schema = @Schema(implementation = ErrorResponseDto.class)
+                    )
+            )
+    })
+    @GetMapping("/build-info")
+    public ResponseEntity<String> getBuildInfo() {
+        return ResponseEntity
+                .ok()
+                .body(buildVersion);
+    }
+
+
+    @Operation(summary = "Get Java Version", description = "REST API to Get Java Version")
+    @ApiResponses({
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "HTTP status OK"
+            ),
+            @ApiResponse(
+                    responseCode = "417",
+                    description = "INTERNAL SERVER ERROR",
+                    content = @Content(
+                            schema = @Schema(implementation = ErrorResponseDto.class)
+                    )
+            )
+    })
+    @GetMapping("/java-version")
+    public ResponseEntity<String> getJavaVersion(){
+        return ResponseEntity
+                .ok()
+                .body(environment.getProperty("JAVA_HOME"));
     }
 
 }
