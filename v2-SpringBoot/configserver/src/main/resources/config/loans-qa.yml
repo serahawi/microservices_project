@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+cards:
+  message: "Welcome to loans related QA APIs "
+  contactDetails:
+    name: "Hashim Hani - Sr. Application Support"
+    email: "e.hashimkilani@gmail.com"
+  onCallSupport:
+    - (+20) 1141679790
+    - (555) 523-1345

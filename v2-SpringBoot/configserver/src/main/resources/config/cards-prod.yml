@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+cards:
+  message: "Welcome to cards related PROD APIs "
+  contactDetails:
+    name: "Hashim Hani - Jr. Application Support"
+    email: "e.hashimkilani@gmail.com"
+  onCallSupport:
+    - (+20) 1141679790
+    - (555) 523-1345

@@ -1,0 +1,25 @@
+services:
+
+  network-service:
+    networks:
+      - serahawi
+
+  config-base-service:
+    extends:
+      service: network-service
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    environment:
+      SPRING_RABBITMQ_HOST: rabbit
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: guest
+      SPRING_RABBITMQ_PASSWORD: guest
+
+  microservices-config-service:
+    extends:
+      service: config-base-service
+    environment:
+      SPRING_PROFILES_ACTIVE: qa
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/

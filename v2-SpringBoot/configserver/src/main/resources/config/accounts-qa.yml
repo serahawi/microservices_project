@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+accounts:
+  message: "Welcome to accounts related QA APIs "
+  contactDetails:
+    name: "Sara Ashraf - Sr. Developer"
+    email: "e.sarahawi@gmail.com"
+  onCallSupport:
+    - (+20) 1552223737
+    - (555) 523-1345

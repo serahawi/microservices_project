@@ -1,0 +1,11 @@
+build:
+  version: "3.0"
+
+loans:
+  message: "Welcome to loans related local APIs "
+  contactDetails:
+    name: "Noura - Application Support"
+    email: "e.nourakilani@gmail.com"
+  onCallSupport:
+    - (+20) 1132435456
+    - (555) 523-1345

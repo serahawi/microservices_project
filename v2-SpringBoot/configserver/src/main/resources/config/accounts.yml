@@ -1,0 +1,11 @@
+build:
+  version: "3.0"
+
+accounts:
+  message: "Welcome to accounts related local APIs "
+  contactDetails:
+    name: "Sara Ashraf - Developer"
+    email: "e.sarahawi@gmail.com"
+  onCallSupport:
+      - (+20) 1552223737
+      - (555) 523-1345
