@@ -4,6 +4,19 @@ services:
     networks:
       - serahawi
 
+  microservice-db-config:
+    extends:
+      service: network-service
+    image: mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 10s
+      retries: 10
+      interval: 10s
+      start_period: 10s
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
   config-base-service:
     extends:
       service: network-service

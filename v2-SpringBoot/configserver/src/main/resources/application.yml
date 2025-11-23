@@ -18,11 +18,6 @@ spring:
           timeout: 5
 #        native:
 #          search-locations: "classpath:/config"
-  rabbitmq:
-    host: rabbit
-    port: 5672
-    username: guest
-    password: guest
 
 encrypt:
   key: "X3Q1KLNVJOPWVH3ON9V43O2GH"
